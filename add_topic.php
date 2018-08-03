@@ -1,9 +1,9 @@
 <?php
 
 $host="localhost"; // Host name
-$username="achanzer_DFadmin"; // Mysql username
-$password="ShibaMochi045X!"; // Mysql password
-$db_name="achanzer_DBLR"; // Database name
+$username="DFadmin"; // Mysql username
+$password="database_password"; // Mysql password
+$db_name="DBLR"; // Database name
 $tbl_name="forum_question"; // Table name
 
 // Connect to server and select database.

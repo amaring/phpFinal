@@ -4,9 +4,9 @@
 */
   // DB Params
   define("DB_HOST", "localhost");
-  define("DB_USER", "achanzer_DFadmin");
-  define("DB_PASS", "ShibaMochi045X!");
-  define("DB_NAME", "achanzer_DBLR");
+  define("DB_USER", "DFadmin");
+  define("DB_PASS", "database_password");
+  define("DB_NAME", "DBLR");
 
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));

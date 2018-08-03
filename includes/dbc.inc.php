@@ -1,9 +1,9 @@
 <?php
 
 $dbHost = "localhost";
-$dbUsername = "achanzer_DFadmin";
-$dbPassword = "ShibaMochi045X!";
-$dbName = "achanzer_DBLR";
+$dbUsername = "DFadmin";
+$dbPassword = "database_password";
+$dbName = "DBLR";
 
 $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 ?>
