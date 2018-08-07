@@ -1,22 +1,16 @@
 <?php
+include('config/config.php');
+include_once('templates/header.php');
 
-$host="localhost"; // Host name
-$username="DFadmin"; // Mysql username
-$password="database_password!"; // Mysql password
-$db_name="DBLR"; // Database name
-$tbl_name="forum_question"; // Table name
-
-// Connect to server and select databse.
-$link=mysqli_connect("$host", "$username", "$password")or die("cannot connect");
-mysqli_select_db($link, "$db_name")or die("cannot select DB");
+$tbl_name = "forum_question"; // Table name
 
 // get value of id that sent from address bar
-$id=$_GET['id'];
+$id = $_GET['id'];
 
-$sql="SELECT * FROM $tbl_name WHERE id='$id'";
-$result=mysqli_query($link, $sql);
+	$sql = "SELECT * FROM ".$tbl_name." WHERE id='".$id."';";
+	$res = mysqli_query($mysqli, $sql) or die('-1'.mysqli_error());
 
-$rows=mysqli_fetch_array($result);
+	$rows = mysqli_fetch_array($res);
 ?>
 
 <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
@@ -46,8 +40,8 @@ $rows=mysqli_fetch_array($result);
 
 $tbl_name2="forum_answer"; // Switch to table "forum_answer"
 
-$sql2="SELECT * FROM $tbl_name2 WHERE question_id='$id'";
-$result2=mysqli_query($link, $sql2);
+$sql2="SELECT * FROM ".$tbl_name2." WHERE question_id='".$id."';";
+$result2=mysqli_query($mysqli, $sql2) or die('-1'.mysqli_error());
 
 while($rows=mysqli_fetch_array($result2)){
 ?>
@@ -89,13 +83,11 @@ while($rows=mysqli_fetch_array($result2)){
 <?php
 }
 
-$sql3="SELECT view FROM $tbl_name WHERE id='$id'";
-$result3=mysqli_query($link, $sql3);
+$sql3="SELECT view FROM ".$tbl_name." WHERE id='".$id."';";
+$result3=mysqli_query($mysqli, $sql3) or die('-1'.mysqli_error());
 
 $rows=mysqli_fetch_array($result3);
 $view=$rows['view'];
-
- 
 
 // if you have no counter value set counter = 1
 if(empty($view)){
@@ -104,14 +96,12 @@ $sql4="INSERT INTO $tbl_name(view) VALUES('$view') WHERE id='$id'";
 $result4=mysqli_query($link, $sql4);
 }
 
- 
-
 // count more value
 $addview=$view+1;
 $sql5="update $tbl_name set view='$addview' WHERE id='$id'";
-$result5=mysqli_query($link, $sql5);
+$result5=mysqli_query($mysqli, $sql5) or die('-1'.mysqli_error());
 
-mysqli_close();
+//mysqli_close();
 ?>
 
 
@@ -146,3 +136,6 @@ mysqli_close();
 </form>
 </tr>
 </table>
+<?php
+include_once('templates/footer.php')
+?>
