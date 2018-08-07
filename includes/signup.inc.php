@@ -2,13 +2,13 @@
 
 if (isset($_POST['submit'])){
 	
-	include_once 'dbc.inc.php';
+	include_once('../config/config.php');
 	
-	$first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
-	$last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$username = mysqli_real_escape_string($conn, $_POST['username']);
-	$password = mysqli_real_escape_string($conn, $_POST['password']);
+	$first_name = mysqli_real_escape_string($mysqli, $_POST['first_name']);
+	$last_name = mysqli_real_escape_string($mysqli, $_POST['last_name']);
+	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$username = mysqli_real_escape_string($mysqli, $_POST['username']);
+	$password = mysqli_real_escape_string($mysqli, $_POST['password']);
 	
 	// Error handlers
 	// Check for empty fields
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])){
 				exit();
 			} else { // email is valid
 				$sql = "SELECT * FROM users WHERE username= '$username'";
-				$result = mysqli_query($conn, $sql);
+				$result = mysqli_query($mysqli, $sql) or die('-1'.mysqli_error());
 				$resultCheck = mysqli_num_rows($result);
 				
 				if ($resultCheck > 0) {
@@ -37,9 +37,9 @@ if (isset($_POST['submit'])){
 					// Hashing the password
 					$hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 					// Insert user into the database
-					$sql = "INSERT INTO users (first_name, last_name, email, username, password) VALUES ('$first_name', '$last_name', 
+					$sql2 = "INSERT INTO users (first_name, last_name, email, username, password) VALUES ('$first_name', '$last_name', 
 					'$email', '$username', '$hashedPwd');";
-					mysqli_query($conn, $sql);
+					mysqli_query($mysqli, $sql2) or die('-1'.mysqli_error());
 					header("Location: ../home.php?signup=success");
 					exit();
 				}
