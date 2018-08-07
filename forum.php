@@ -1,20 +1,11 @@
 <?php 
+	include('config/config.php');
 	include_once 'templates/header.php';
 
-$host="localhost"; // Host name
-$username="DFadmin"; // Mysql username
-$password="database_password"; // Mysql password
-$db_name="DBLR"; // Database name
-$tbl_name="forum_question"; // Table name
-
-// Connect to server and select database.
-$link=mysqli_connect("$host", "$username", "$password")or die("cannot connect");
-mysqli_select_db($link, "$db_name")or die("cannot select DB");
-
-$sql="SELECT * FROM $tbl_name ORDER BY id DESC";
-// ORDER BY id DESC is order result by descending
-
-$result=mysqli_query($link, $sql);
+// Get Data
+	$query = "SELECT * FROM forum_question ORDER BY id DESC;";
+    $res = mysqli_query($mysqli, $query) or die('-1'.mysqli_error());
+	//$rows = $mysqli->query("SELECT * FROM forum_question ORDER BY id DESC;");
 ?>
 <!-- html -->
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -30,7 +21,7 @@ $result=mysqli_query($link, $sql);
 
 <?php
 // Start looping table row
-while($rows=mysqli_fetch_array($result)){ ?>
+while($rows=mysqli_fetch_array($res)){ ?>
 <!-- html -->
 <tr>
 <td align="center" bgcolor="#FFFFFF"><? echo $rows['id']; ?></td>
@@ -41,19 +32,19 @@ while($rows=mysqli_fetch_array($result)){ ?>
 </tr>
 <!-- end html -->
 
-<?php mysqli_close(); } ?>
+<!--<?php mysqli_close(); } ?> -->
 <!-- end table -->
 </table>
 
 
 <?php if (isset($isAdmin)): ?>
-	// display crud functions
-	// update
+	<!-- display crud functions -->
+	<!-- update -->
 	<button>update</button>;
-	// delete
+	<!-- delete -->
 	<button>delete comment</button>
 <? else: ?>
-	// display normal user form
+	<!-- display normal user form -->
 	<form>
 		<h2>normal user form</h2>
 		<p>create</p>
@@ -61,4 +52,4 @@ while($rows=mysqli_fetch_array($result)){ ?>
 	</form>
 <?php endif; ?>
 
-<?php include_once 'footer.php'; ?>
+<?php include_once 'templates/footer.php'; ?>
