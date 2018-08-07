@@ -1,3 +1,7 @@
+<?php
+include('config/config.php');
+include_once('templates/header.php');
+?>
 <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 	<tr>
 <form id="form1" name="form1" method="post" action="add_topic.php">
@@ -36,3 +40,6 @@
 		</form>
 	</tr>
 </table>
+<?php
+include_once('templates/footer.php');
+?>
