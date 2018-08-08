@@ -352,6 +352,12 @@ header .nav-login a {
 .reply_form input[type=email]:focus, .reply_form textarea:focus, .reply_form input[type=text]:focus  {
     background-color: #9ED7D7;
 }
+.reply_form h1 {
+	font-family:Arial;
+	font-size: 2em;
+	color: white;
+	padding-top: 10px;
+}
 .success{
     width: 50%;
     min-width: 500px;
