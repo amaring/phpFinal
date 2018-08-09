@@ -1,14 +1,12 @@
 <?php
+include_once('../config/config.php');
 
 if (isset($_POST['submit'])){
-	
-	include_once 'dbc.inc.php';
-	
-	$first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
-	$last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$username = mysqli_real_escape_string($conn, $_POST['username']);
-	$password = mysqli_real_escape_string($conn, $_POST['password']);
+	$first_name = htmlspecialchars($_POST['first_name']);
+	$last_name = htmlspecialchars($_POST['last_name']);
+	$email = htmlspecialchars($_POST['email']);
+	$username = htmlspecialchars($_POST['username']);
+	$password = encryptIt($_POST['password']);
 	
 	// Error handlers
 	// Check for empty fields
@@ -27,19 +25,24 @@ if (isset($_POST['submit'])){
 				exit();
 			} else { // email is valid
 				$sql = "SELECT * FROM users WHERE username= '$username'";
-				$result = mysqli_query($conn, $sql);
+				$result = mysqli_query($mysqli, $sql) or die('-1'.mysqli_error());
 				$resultCheck = mysqli_num_rows($result);
 				
 				if ($resultCheck > 0) {
 					header("Location: ../register.php?signup=userexist");
 					exit();
 				} else {
-					// Hashing the password
-					$hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 					// Insert user into the database
-					$sql = "INSERT INTO users (first_name, last_name, email, username, password) VALUES ('$first_name', '$last_name', 
-					'$email', '$username', '$hashedPwd');";
-					mysqli_query($conn, $sql);
+					$sql2 = $mysqli->prepare("INSERT INTO users (first_name, last_name, email, username, password) VALUES (?,?,?,?,?);");
+					$sql2->bind_param('sssss', 
+					    $first_name,
+					    $last_name,
+					    $email,
+					    $username,
+					    $password
+					);
+					$sql2->execute();
+					$sql2->close();
 					header("Location: ../home.php?signup=success");
 					exit();
 				}

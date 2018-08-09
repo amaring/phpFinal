@@ -1,9 +1,13 @@
 <?php
+    include('config/config.php');
 	session_start();
 	// Check if user is admin
-	if(isset($isAdmin)){
-		// assign session, name & id
-		$isAdmin = session_name('IsAdmin');
+	if(isset($_SESSION['u_type'])){
+		if (($_SESSION['u_type']) == 1){
+		    // assuming admin users have a user_type in the user table of 1, do the following
+		    $admin_visible = TRUE;
+		}
+		
 		// now this can be used in other pages while admin is logged in (session exists)
 	}	
 ?>
@@ -26,7 +30,7 @@
 			</ul>
 			<div class="nav-login">
 				<!-- Hide if user is logged in and session variables are set -->
-				<?php if(isset($_SESSION['user_id'])) : ?>{} 					
+				<?php if(isset($_SESSION['u_id'])) : ?> 					
 					<form action="includes/logout.inc.php" method="POST">
 						<button type="submit" name="submit">Logout</button>
 					</form>						
@@ -42,4 +46,3 @@
 		</div>
 	</nav>
 </header>
-

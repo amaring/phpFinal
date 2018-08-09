@@ -8,7 +8,7 @@
 		<?php
 		
 			if(isset($_SESSION['u_id'])) {
-				echo "Welcome, " .$_SESSION['u_username'];
+				echo "Welcome " .$_SESSION['u_first'] ."!";
 			}
 		
 		?>

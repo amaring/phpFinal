@@ -253,38 +253,172 @@ header .nav-login a {
   text-align: center;
 }
 
-table {
-	width: 800px;
-	border-collapse: collapse;
-	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+/*Formatting view_topic.php*/
+
+.first_post{
+    width: 50%; 
+    min-width: 500px; 
+    margin-right:auto; 
+    margin-left: auto; 
+    background: #9ED7D7; 
+    padding: 10px;
+}
+.first_post h2 {
+    font-size: 1.5em;
+    font-family: Arial;
+    text-transform: capitalize;
+    padding-bottom: 5px;
+}
+.first_post>p {
+    font-size: 1em;
+    font-family: Arial;
+    line-height: 1.1;
+}
+.post{
+    width:50%; 
+    min-width: 500px;
+    margin-right:auto; 
+    margin-left: auto; 
+    padding: 10px;
+    background: #9ED7D7;
+}
+.post>p {
+    font-size: 1em;
+    font-family: Arial;
+    line-height: 1.1;
 }
 
-tr, td {
-	padding: 15px;
-	background-color: rgba(255,255,255,0.2);
-	color: black;
+.post:nth-of-type(odd) {
+    background: #fff;
 }
-tr {
-	text-align: left;
+.post:nth-of-type(even) {
+    background: #ddd;
+}
+.posted {
+    text-align: right;
 }
 
-td {
-	position: relative;
-	&:hover {
-		&:before {
-			content: "";
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: -9999px;
-			bottom: -9999px;
-			background-color: rgba(255,255,255,0.2);
-			z-index: -1;
-		}
-	}
-}	
-		
-		
-		
-			
+.reply_form input[type=button],.reply_form input[type=submit],.reply_form input[type=reset] {
+    font-size: 1em;
+    font-family: Arial;
+    width: 100px;
+    background-color: #f3f3f3;
+    color: #111;
+    height: 30px;
+    border: 0px;
+    margin: 5px 10px 0px 0px;
+}
+.reply_form input[type=button]:hover,.reply_form input[type=submit]:hover, .reply_form input[type=reset]:hover {
+    background-color: #ccc;
+}
+.reply_form {
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-width: 500px;
+}
+.reply_form label{
+    box-sizing: border-box;
+    display: inline-block;
+    font-weight: bold;
+    width: 70px;
+    margin-bottom: 10px;
+    font-family: Arial;
+    font-size: 1em;
+    color: #fff;
+    vertical-align: middle;
+}
+.reply_form textarea{
+    width: calc(100% - 74px);
+    display:inline-block;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 8px 0px;
+    vertical-align: middle;
+}
+.reply_form input[type=text], .reply_form input[type=email] {
+    width: calc(100% - 74px);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 8px 0px;
+}
+.reply_form input[type=email]:focus, .reply_form textarea:focus, .reply_form input[type=text]:focus  {
+    background-color: #9ED7D7;
+}
+.reply_form h1 {
+	font-family:Arial;
+	font-size: 2em;
+	color: white;
+	padding-top: 10px;
+}
+.success{
+    width: 50%;
+    min-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial;
+    font-size: 1.5em;
+    text-align: center;
+    color: black;
+    background: #fff;
+    background: rgba(255,255,255,0.8);
+}
+/* Add Answer.php */
+.success a{
+    color: black;
+    text-align: center;
+}
+.success a:hover, .success a:visited{
+    text-decoration: underline;
+}
+.error{
+    font-family: Arial;
+    color: red;
+    size: 1.5em;
+}
+/* Forum.php */
+.forum {
+    border-collapse: collapse;
+    font-family: Arial;
+    font-size: 1em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.forum thead td {
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 1.1em;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+.forum tbody td {
+    font-family: Arial;
+    font-size: 1em;
+    line-height: 1.1;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid gray;
+}
+.forum tbody td a {
+    color: #000;
+    padding: 0 5px;
+}
+.forum tbody td a:hover,  .forum tbody td a:visited{
+    background-color: #9ED7D7;
+    padding: 0 5px;
+}
+.forum tbody tr:nth-of-type(odd) {
+    background: #fff;
+}
+.forum tbody tr:nth-of-type(even) {
+    background: #ddd;
+}
