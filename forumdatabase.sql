@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `forum_answer` (
   `a_email` varchar(65) NOT NULL,
   `a_answer` longtext NOT NULL,
   `a_datetime` varchar(25) NOT NULL,
-  PRIMARY KEY (`a_id`)
+  KEY `question_id` (`question_id`,`a_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --

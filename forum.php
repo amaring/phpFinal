@@ -1,4 +1,5 @@
 <?php 
+	include('config/config.php');
 	include_once 'templates/header.php';
 
 // Get Data

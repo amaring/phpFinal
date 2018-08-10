@@ -9,7 +9,8 @@
 		}
 		
 		// now this can be used in other pages while admin is logged in (session exists)
-	}	
+	}
+	include('config/config.php');
 ?>
 
 <!DOCTYPE html>
